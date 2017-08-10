@@ -1,0 +1,818 @@
+@mixin flex-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.container {
+  font-family: 'Roboto', sans-serif;
+
+  margin-bottom: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .item {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-around;
+
+    .counter {
+      width: 20%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-right: 1px solid #B0B0B0;
+
+      .counterInner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .count {
+          margin-bottom: 1rem;
+          font-size: 2rem;
+          text-align: center;
+        }
+        .title {
+          font-size: 1rem;
+          text-align: center;
+        }
+      }
+
+    }
+    .content {
+      width: 60%;
+    }
+  }
+
+  .nextButtonWrapper {
+    width: 20%;
+    .nextButtonInner {
+      height: 25px;
+      width: 50px;
+      color: white;
+      background-color: #439097;
+      border-radius: 5px;
+    }
+  }
+
+  .textContentWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    .textContentInner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      margin-top: 25vh;
+      margin-bottom: 25vh;
+      padding: 2rem;
+
+      text-align: center;
+
+      width: 90%;
+      height: auto;
+
+      background-color: #F7746D;
+      color: white;
+
+      border-radius: 5px;
+    }
+  }
+}
+
+
+// EXAMPLE 1
+// Hover
+.example-hover {
+  @include flex-center();
+
+  .example-hover-inner {
+    height: 200px;
+    width: 400px;
+
+    background-color: #F7746D;
+    border-radius: 5px;
+    color: white;
+    @include flex-center();
+
+    &:hover {
+      .text {
+        display: block;
+      }
+    }
+
+    .text {
+      display:none;
+    }
+  }
+}
+
+// EXAMPLE 2
+// Opacity
+.example-opacity {
+  @include flex-center();
+
+  .example-opacity-inner {
+    height: 200px;
+    width: 400px;
+
+    background-color: #F7746D;
+    border-radius: 5px;
+    color: white;
+    @include flex-center();
+
+    &:hover {
+      .text {
+        filter: opacity(1) !important;
+      }
+    }
+
+    .text {
+      transition: filter 1s;
+      /* Apply a 1 second transition to the filter property
+        such that when the hover selector takes over, the opacity
+        will fade in over one second.
+      */
+
+      filter: opacity(0);
+    }
+  }
+}
+
+
+// EXAMPLE 3
+// Transitions
+.example-transitions-more {
+  @include flex-center();
+
+  .example-transitions-more-inner {
+    height: 200px;
+    width: 400px;
+
+    transition: background-color 1s;
+    background-color: #F7746D;
+
+    border-radius: 5px;
+    color: white;
+    @include flex-center();
+
+    &:hover {
+      background-color: #439097 !important;
+      .text {
+        filter: opacity(1) !important;
+      }
+    }
+
+    .text {
+
+      transition: filter 1s;
+      /* Apply a 1 second transition to the filter property
+        such that when the hover selector takes over, the opacity
+        will fade in over one second.
+      */
+
+      filter: opacity(0);
+    }
+  }
+}
+
+
+// EXAMPLE 4
+// Transitions
+
+@keyframes followBorder {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  25% {
+    top: 0;
+    left: 400px;
+  }
+  50% {
+    top: 200px;
+    left: 400px;
+  }
+  75% {
+    top: 200px;
+    left: 0px;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+  }
+}
+.example-keyframes-1 {
+  @include flex-center();
+
+  .wrapper {
+    height: 210px;
+    width: 410px;
+    border: 1px solid #F7746D;
+    .ball {
+      position: relative;
+      height: 10px;
+      width: 10px;
+      border-radius: 5px;
+      background-color: #439097;
+
+      //Animation
+      animation-name: followBorder;
+      animation-duration: 2s; /* or: Xms */
+      animation-iteration-count: infinite;
+      animation-direction: normal; /* or: normal */
+      animation-timing-function: ease; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+      animation-fill-mode: forwards; /* or: backwards, both, none */
+      animation-delay: 0s; /* or: Xms */
+    }
+  }
+}
+
+
+
+// EXAMPLE 5
+// keyframes in circle???
+
+@keyframes goInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.example-keyframes-2 {
+  @include flex-center();
+
+  .wrapper {
+    height: 210px;
+    width: 410px;
+    border: 1px solid #F7746D;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .ballContainer {
+
+      height: 100px;
+      width: 200px;
+
+      top: 100px;
+      left: 200px;
+
+      //Animation
+      animation-name: goInCircle;
+      animation-duration: 2s; /* or: Xms */
+      animation-iteration-count: infinite;
+      animation-direction: normal; /* or: normal */
+      animation-timing-function: linear; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+      animation-fill-mode: forwards; /* or: backwards, both, none */
+      animation-delay: 0s; /* or: Xms */
+
+      .ball {
+        position: relative;
+        height: 20px;
+        width: 20px;
+
+        border-radius: 10px;
+        background-color: #439097;
+      }
+    }
+  }
+}
+
+
+
+
+// EXAMPLE 6
+// keyframes in circle???
+
+@keyframes bounce1 {
+  0%   {
+    transform: translateY(0px);
+    animation-timing-function:ease-in;
+  }
+  37%  {
+    transform: translateY(200px);
+    animation-timing-function:ease-out;
+  }
+  55%  {
+    transform: translateY(150px);
+    animation-timing-function:ease-in;
+  }
+  73%  {
+    transform: translateY(200px);
+    animation-timing-function:ease-out;
+  }
+  82%  {
+    transform: translateY(175px);
+    animation-timing-function:ease-in;
+  }
+  91%  {
+    transform: translateY(200px);
+    animation-timing-function:ease-out;
+  }
+  96%  {
+    transform: translateY(185px);
+    animation-timing-function:ease-in;
+  }
+  100% {
+    transform: translateY(200px);
+    animation-timing-function:ease-out;
+  }
+}
+.example-keyframes-3 {
+  @include flex-center();
+
+  .wrapper {
+    height: 210px;
+    width: 410px;
+    border: 1px solid #F7746D;
+
+    display: flex;
+    justify-content: center;
+
+    .ball {
+
+      height: 20px;
+      width: 20px;
+      border-radius: 10px;
+      background-color: #439097;
+
+      //Animation
+      animation-name: bounce1;
+      animation-duration: 2s; /* or: Xms */
+      animation-iteration-count: infinite;
+      animation-direction: normal; /* or: normal */
+      animation-timing-function: ease; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+      animation-fill-mode: forwards; /* or: backwards, both, none */
+      animation-delay: 0s; /* or: Xms */
+    }
+  }
+}
+
+
+
+
+
+// EXAMPLE 7
+// Button Animation
+
+@keyframes top-border {
+  0%   {
+    filter: opacity(0);
+    height: 0px;
+    width: 0px;
+  }
+  25%   {
+    height: 0px;
+    width: 48px;
+  }
+  50%   {
+    height: 0px;
+    width: 96px;
+  }
+  75%   {
+    height: 23px;
+    width: 96px;
+  }
+  100% {
+    filter: opacity(1);
+    height: 46px;
+    width: 96px;
+  }
+}
+
+@keyframes bottom-border {
+  0%   {
+    filter: opacity(0);
+    height: 0px;
+    width: 0px;
+    left: 100px;
+  }
+  25%   {
+    height: 23px;
+    width: 0px;
+    left: 100px;
+  }
+  50%   {
+    height: 46px;
+    width: 0px;
+    left: 100px;
+  }
+  75%   {
+    height: 46px;
+    width: 48px;
+    left: 52px;
+  }
+  100% {
+    filter: opacity(1);
+    height: 46px;
+    width: 96px;
+    left: 4px;
+  }
+}
+
+.example-keyframes-4 {
+  @include flex-center();
+
+  .wrapper {
+    height: 210px;
+    width: 410px;
+    border: 1px solid #F7746D;
+
+    @include flex-center();
+
+    .button {
+
+      height: 50px;
+      width: 100px;
+      background-color: #439097;
+      border-color: white;
+
+      &:hover {
+        &::before {
+          //Animation
+          animation-name: top-border;
+          animation-duration: 2s; /* or: Xms */
+          animation-iteration-count: 1;
+          animation-direction: normal; /* or: normal */
+          animation-timing-function: ease-in-out; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+          animation-fill-mode: forwards; /* or: backwards, both, none */
+          animation-delay: 0s; /* or: Xms */
+
+        }
+
+        &::after {
+          //Animation
+          animation-name: bottom-border;
+          animation-duration: 2s; /* or: Xms */
+          animation-iteration-count: 1;
+          animation-direction: normal; /* or: normal */
+          animation-timing-function: ease-in-out; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+          animation-fill-mode: forwards; /* or: backwards, both, none */
+          animation-delay: 2s; /* or: Xms */
+        }
+      }
+
+
+      &::before {
+        display: block;
+        content: "";
+        position: relative;
+
+        top: -4px;
+        left: -4px;
+
+        height: 46px;
+        width: 96px;
+
+        filter: opacity(0);
+
+        border-top: 4px solid #F7746D;
+        border-left: 4px solid #F7746D;
+
+      }
+
+      &::after {
+        display: block;
+        content: "";
+        position: relative;
+
+        top: -46px;
+        left: 4px;
+
+        height: 46px;
+        width: 96px;
+
+        filter: opacity(0);
+
+        border-right: 4px solid #F7746D;
+        border-bottom: 4px solid #F7746D;
+      }
+    }
+  }
+}
+
+
+//Example 8
+
+@keyframes yayIn {
+  from {
+    filter: opacity(0);
+  }
+  to {
+    filter: opacity(1);
+  }
+}
+
+.example-click-1 {
+  @include flex-center();
+
+  .wrapper {
+    height: 210px;
+    width: 410px;
+    border: 1px solid #F7746D;
+
+    @include flex-center();
+    flex-direction: column;
+
+    .button {
+
+      height: 50px;
+      width: 100px;
+      background-color: #439097;
+      border-color: white;
+      cursor: pointer;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: white;
+
+      transition: background-color 0.2s;
+      &:hover {
+        background-color: rgba(67, 144, 151, 0.71);
+      }
+    }
+
+    .wallOfYays {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      .Yay {
+        margin-right: 1rem;
+        margin-left: 1rem;
+        filter: opacity(0);
+      }
+    }
+
+    .activated {
+      :nth-child(1) {
+        animation-name: yayIn;
+        animation-duration: 1s; /* or: Xms */
+        animation-iteration-count: 1;
+        animation-direction: normal; /* or: normal */
+        animation-timing-function: ease; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+        animation-fill-mode: forwards; /* or: backwards, both, none */
+        animation-delay: 0s; /* or: Xms */
+      }
+      :nth-child(2) {
+        animation-name: yayIn;
+        animation-duration: 1s; /* or: Xms */
+        animation-iteration-count: 1;
+        animation-direction: normal; /* or: normal */
+        animation-timing-function: ease; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+        animation-fill-mode: forwards; /* or: backwards, both, none */
+        animation-delay: 0.5s; /* or: Xms */
+      }
+      :nth-child(3) {
+        animation-name: yayIn;
+        animation-duration: 1s; /* or: Xms */
+        animation-iteration-count: 1;
+        animation-direction: normal; /* or: normal */
+        animation-timing-function: ease; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+        animation-fill-mode: forwards; /* or: backwards, both, none */
+        animation-delay: 1s; /* or: Xms */
+      }
+    }
+  }
+}
+
+
+
+
+// Dropdown example.
+@keyframes close1 {
+  from {
+    transform: rotate(0) translateY(0px) translateX(0);
+  }
+  to {
+    transform: rotate(-45deg); /*translateY(7.5px) translateX(-7.5px)*/
+  }
+}
+@keyframes close2 {
+  from {
+    filter: opacity(1);
+  }
+  to {
+    filter: opacity(0);
+  }
+}
+@keyframes close3 {
+  from {
+    transform: rotate(0deg)  translateY(0px) translateX(0);
+  }
+  to {
+    transform: rotate(45deg);  /*translateY(-7.5px) translateX(-7.5px)*/
+  }
+}
+
+
+//Example 9
+
+.example-dropdown-1 {
+  @include flex-center();
+
+  .wrapper {
+    height: 210px;
+    width: 410px;
+    border: 1px solid #F7746D;
+    position: relative;
+    flex-direction: column;
+    overflow: hidden;
+
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      height: 50px;
+      width : 410px;
+
+      background-color: #439097;
+
+      color: white;
+
+      display: flex;
+      align-items: center;
+
+      z-index: 2;
+
+      .headerInner {
+        padding-left: 2rem;
+        padding-right: 2rem;
+
+        .close {
+          display: flex;
+          flex-direction: column;
+
+          :nth-child(1) {
+            margin-top: 5px;
+            height: 5px;
+            width: 30px;
+            background-color: white;
+            border-radius: 2px;
+
+            transition: transform 1s;
+          }
+          :nth-child(2) {
+            margin-top: 5px;
+            height: 5px;
+            width: 30px;
+            background-color: white;
+            border-radius: 2px;
+
+            transition: filter 1s;
+          }
+          :nth-child(3) {
+            margin-top: 5px;
+            height: 5px;
+            width: 30px;
+            background-color: white;
+            border-radius: 2px;
+
+            transition: transform 1s;
+          }
+        }
+
+        .activated {
+          :nth-child(1) {
+            transform: rotate(-45deg) translateY(7.5px) translateX(-7.5px);
+          }
+          :nth-child(2) {
+            filter: opacity(0) !important;
+          }
+          :nth-child(3) {
+            transform: rotate(45deg)  translateY(-7.5px) translateX(-7.5px);
+          }
+        }
+      }
+    }
+
+    .menu {
+      transform: translateY(calc(-100%));
+
+      width: 100%;
+      height: calc(100% - 50px);
+
+      background-color: #439097;
+
+      transition: transform 1s, filter 1s, background-color 2s;
+
+      z-index: 1;
+
+      .menuInner {
+
+        padding: 2rem;
+        color: white;
+
+        :nth-child(1) {
+          transition: transform 1s ease-in-out 0.2s;
+        }
+        :nth-child(2) {
+          transition: transform 1s ease-in-out 0.4s;
+        }
+        :nth-child(3) {
+          transition: transform 1s ease-in-out 0.6s;
+        }
+        .menuItem {
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+
+          transform: translateX(-100px);
+        }
+      }
+    }
+
+    .menuActivated {
+      transform: translateY(calc(50px)) !important;
+      filter: opacity(1);
+      background-color: #F7746D;
+
+      .menuInner {
+
+        .menuItem {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+}
+
+
+
+//Example 10
+
+.example-image-1 {
+  @include flex-center();
+
+  .wrapper {
+    height: 210px;
+    width: 410px;
+    border: 1px solid #F7746D;
+    position: relative;
+    flex-direction: column;
+    overflow: hidden;
+    @include flex-center();
+
+    .button {
+      height: 50px;
+      width: 100px;
+      background-color: #439097;
+      border-radius: 5px;
+      @include flex-center();
+      color: white;
+
+      z-index: 2;
+
+      cursor: pointer;
+    }
+    .image {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      margin: auto;
+      z-index: 1;
+      background: linear-gradient(to bottom, #f9ffbb, #1a4d4d);
+      img {
+        height: 100%;
+        width: 100%;
+        filter: opacity(0) blur(4px);
+        transition: filter 2s;
+      }
+      .addUrl {
+        content: url("https://static.pexels.com/photos/4827/nature-forest-trees-fog.jpeg");
+      }
+      .loaded {
+        filter: opacity(1) blur(0px);
+      }
+    };
+  }
+}
+
+
+
