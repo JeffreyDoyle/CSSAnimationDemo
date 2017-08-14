@@ -4,7 +4,6 @@
   align-items: center;
 }
 
-
 .container {
   font-family: 'Roboto', sans-serif;
 
@@ -94,6 +93,7 @@
 
 
 // EXAMPLE 1
+
 // Hover
 .example-hover {
   @include flex-center();
@@ -120,6 +120,7 @@
 }
 
 // EXAMPLE 2
+
 // Opacity
 .example-opacity {
   @include flex-center();
@@ -190,6 +191,7 @@
 
 
 // EXAMPLE 4
+
 // Transitions
 
 @keyframes followBorder {
@@ -243,7 +245,8 @@
 
 
 // EXAMPLE 5
-// keyframes in circle???
+
+// keyframes in circle.
 
 @keyframes goInCircle {
   0% {
@@ -307,7 +310,6 @@
 
 
 // EXAMPLE 6
-// keyframes in circle???
 
 @keyframes bounce1 {
   0%   {
@@ -378,6 +380,7 @@
 
 
 // EXAMPLE 7
+
 // Button Animation
 
 @keyframes top-border {
